@@ -258,6 +258,12 @@ namespace RuntimeInspectorNamespace
 			}
 		}
 
+		[SerializeField]
+		private bool doFilterComponents = false;
+
+		[SerializeField]
+		private List<string> componentsToFilter;
+
 		protected override void Awake()
 		{
 			base.Awake();
@@ -271,6 +277,12 @@ namespace RuntimeInspectorNamespace
 
 			initialized = true;
 
+			if (doFilterComponents)
+			{
+				ComponentFilter = (gameObject, components) =>
+					components.RemoveAll(c => componentsToFilter.Contains(c.GetType().ToString()));
+			}
+
 			drawArea = scrollView.content;
 			m_canvas = GetComponentInParent<Canvas>();
 			nullPointerEventData = new PointerEventData( null );
@@ -282,10 +294,10 @@ namespace RuntimeInspectorNamespace
 			}
 
 			GameObject poolParentGO = GameObject.Find( POOL_OBJECT_NAME );
-			if( poolParentGO == null )
+			if (poolParentGO == null)
 			{
-				poolParentGO = new GameObject( POOL_OBJECT_NAME );
-				DontDestroyOnLoad( poolParentGO );
+				poolParentGO = new GameObject(POOL_OBJECT_NAME);
+				DontDestroyOnLoad(poolParentGO);
 			}
 
 			poolParent = poolParentGO.transform;
