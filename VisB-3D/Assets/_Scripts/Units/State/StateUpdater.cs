@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class StateUpdater : MonoBehaviour
 {
-
+    [SerializeField]
+    private VisB3DObjectDto currentState;
     /// <summary>
     /// Updates the visual State of the GameObject based on the provided DTO.
     /// </summary>
     /// <param name="newState"></param>
     public void UpdateState(VisB3DObjectDto newState)
     {
+        currentState = newState;
         UpdatePosition(newState);
         UpdateRotation(newState);
         UpdateScale(newState);
