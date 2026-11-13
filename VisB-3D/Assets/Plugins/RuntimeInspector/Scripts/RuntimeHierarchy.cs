@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq;
+
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 using UnityEngine.InputSystem;
 #endif
@@ -121,23 +123,29 @@ namespace RuntimeInspectorNamespace
 			get { return m_exposeUnityScenes; }
 			set
 			{
-				if( m_exposeUnityScenes != value )
+				if (m_exposeUnityScenes != value)
 				{
 					m_exposeUnityScenes = value;
 
-					for( int i = 0; i < SceneManager.sceneCount; i++ )
+					for (int i = 0; i < SceneManager.sceneCount; i++)
 					{
-						if( value )
-							OnSceneLoaded( SceneManager.GetSceneAt( i ), LoadSceneMode.Single );
+						if (value)
+							OnSceneLoaded(SceneManager.GetSceneAt(i), LoadSceneMode.Single);
 						else
-							OnSceneUnloaded( SceneManager.GetSceneAt( i ) );
+							OnSceneUnloaded(SceneManager.GetSceneAt(i));
 					}
 				}
 			}
 		}
 
-		[SerializeField, UnityEngine.Serialization.FormerlySerializedAs( "exposedScenes" )]
+		[SerializeField, UnityEngine.Serialization.FormerlySerializedAs("exposedScenes")]
 		private string[] exposedUnityScenesSubset;
+
+		[SerializeField]
+		private bool filterGameObjects = true;
+
+		[SerializeField] 
+		private List<Transform> filterTargets;
 
 		[SerializeField]
 		private bool m_exposeDontDestroyOnLoadScene = true;
@@ -492,6 +500,10 @@ namespace RuntimeInspectorNamespace
 		{
 			SceneManager.sceneLoaded += OnSceneLoaded;
 			SceneManager.sceneUnloaded += OnSceneUnloaded;
+
+			GameObjectFilter = transform =>
+				filterTargets.Contains(transform) ||
+				filterTargets.Any(target => transform.IsChildOf(target) || target.IsChildOf(transform));
 
 			if( ExposeUnityScenes )
 			{
