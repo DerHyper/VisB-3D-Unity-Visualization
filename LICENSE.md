@@ -35,7 +35,7 @@ Licensed under the MIT License.
 
 ### glTFast
 
-- **Name:** Newtonsoft Json Unity Package
+- **Name:** glTFast
 - **Author:** Unity Technologies and the glTFast authors
 - **License:** Apache License, Version 2.0
 - **Where changes made?:** No
@@ -65,6 +65,18 @@ No attribution required.
 - **Source:** https://github.com/kou-yeung/WebGLInput
 
 Copyright (c) 2019 kou_yeung
+
+Licensed under the MIT License.
+
+### Runtime Inspector & Hierarchy for Unity 3D
+
+- **Name:** Runtime Inspector & Hierarchy for Unity 3D
+- **Author:** Süleyman Yasir KULA
+- **License:** MIT license
+- **Where changes made?:** No
+- **Source:** https://github.com/yasirkula/UnityRuntimeInspector
+
+Copyright (c) 2017 Süleyman Yasir KULA
 
 Licensed under the MIT License.
 
