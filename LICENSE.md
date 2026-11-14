@@ -73,7 +73,7 @@ Licensed under the MIT License.
 - **Name:** Runtime Inspector & Hierarchy for Unity 3D
 - **Author:** Süleyman Yasir KULA
 - **License:** MIT license
-- **Where changes made?:** No
+- **Where changes made?:** Yes - Added filter options, WebGL copy/paste and changed UI design.
 - **Source:** https://github.com/yasirkula/UnityRuntimeInspector
 
 Copyright (c) 2017 Süleyman Yasir KULA
@@ -99,7 +99,7 @@ No attribution required.
 - **Name:** .gitattributes for Unity projects
 - **Author:** The GameCI community
 - **License:** MIT license
-- **Where changes made?:** Yes - Added filter options, WebGL copy/paste and changed UI design.
+- **Where changes made?:** No
 - **Source:** https://gist.github.com/webbertakken/ff250a0d5e59a8aae961c2e509c07fbc
 
 Copyright (c) 2021 The GameCI community
